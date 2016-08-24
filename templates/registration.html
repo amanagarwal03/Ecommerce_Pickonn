@@ -1,0 +1,14 @@
+
+{{ d }}
+{% if registered %}
+        Rango says: <strong>thank you for registering!</strong>
+        <a href="/ecommerce/">Return to the homepage.</a><br />
+        {% else %}
+        {{ registered }}
+<form id="user_form" method="POST" action="/ecommerce/register/">
+{% csrf_token %}
+{{ user_form.as_p }}
+<!-- Confirm Password: <input type="password" name="cpassword"> -->
+<input type="submit" name="submit">
+</form>
+{% endif %}
