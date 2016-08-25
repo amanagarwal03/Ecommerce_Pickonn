@@ -20,5 +20,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^ecommerce/', include("ecommerce.urls")),
-     url(r'^', admin.site.urls),
+     url(r'^', include("ecommerce.urls")),
 ]

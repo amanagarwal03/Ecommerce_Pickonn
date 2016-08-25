@@ -4,6 +4,7 @@
 <h1>{{title}} peeps</h1>
 {% if user.is_authenticated %}
 <h1>Rango says... hello {{ user.username }}!</h1>
+<a href="/logout/">Logout</a>
 {% else %}
 <h1>Rango says... hello world!</h1>
 {% endif %}
