@@ -63,7 +63,7 @@ def register(request):
         user_form = UserForm()
     # Render the template depending on the context.
     return render_to_response(
-            'registration.html',
+            'register.html',
             {'user_form': user_form,'registered': registered,'d':request.method},
             context)
 
