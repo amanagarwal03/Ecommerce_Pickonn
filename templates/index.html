@@ -1,12 +1,18 @@
 <!--DOCTYPE html-->
+{% load static %}
 <html>
+<head>
+	<title>Pickonn</title>
+</head>
 <body>
-<h1>{{title}} peeps</h1>
+<h1>{{title}} you to the developer's Zone.</h1>
+<!-- <img src="{% static "aman.jpg" %}" alt="Happy Happy" height="350" width="200" /> -->
+<br>
 {% if user.is_authenticated %}
-<h1>Rango says... hello {{ user.username }}!</h1>
+<h1>Pickonn says... hello {{ user.username }}!</h1>
 <a href="/logout/">Logout</a>
 {% else %}
-<h1>Rango says... hello world!</h1>
+<h1>Pickonn says... hello world!</h1>
 {% endif %}
 </body>
 
