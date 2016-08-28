@@ -119,3 +119,9 @@ def user_logout(request):
 
     # Take the user back to the homepage.
     return HttpResponseRedirect('/ecommerce/')
+
+def user_order(request):
+    context = {
+        'title':'My Orders',
+    }
+    return render(request,'orders.html',context)

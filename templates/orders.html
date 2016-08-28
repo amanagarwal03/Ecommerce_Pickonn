@@ -1,0 +1,104 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <!-- SITE TITTLE -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }}</title>
+    
+    <!-- PLUGINS CSS STYLE -->
+    <link href='{% static "account-all-orders_data/jquery-ui.css" %}' rel="stylesheet">
+    <link href='{% static "account-all-orders_data/bootstrap.css" %}' rel="stylesheet">
+    <link href='{% static "account-all-orders_data/font-awesome.css" %}' rel="stylesheet">
+    <link href='{% static "account-all-orders_data/select_option1.css" %}' rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href='{% static "account-all-orders_data/settings.css" %}' media="screen">
+    <link rel="stylesheet" type="text/css" href='{% static "account-all-orders_data/owl.css" %}' media="screen">
+    <link rel="stylesheet" href='{% static "account-all-orders_data/optionswitch.css" %}'>
+
+    <!-- GOOGLE FONT -->
+    <link href='{% static "account-all-orders_data/css.css" %}' rel="stylesheet" type="text/css">
+    
+    <!-- CUSTOM CSS -->
+    <link href='{% static "account-all-orders_data/style.css" %}' rel="stylesheet">
+    <link rel="stylesheet" href='{% static "account-all-orders_data/default.css" %}' id="option_color">
+
+
+  </head>
+
+  <body class="padding">
+  {% include 'header.html' %}
+  
+          <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+              <div class="innerWrapper">
+                <div class="orderBox">
+                  <h4>All Orders</h4>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Order ID</th>
+                          <th>Date</th>
+                          <th>Items</th>
+                          <th>Total Price</th>
+                          <th>Status</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>#451231</td>
+                          <td>Mar 25, 2016</td>
+                          <td>2</td>
+                          <td>$99.00</td>
+                          <td><span class="label label-primary">Processing</span></td>
+                          <td><a href="#" class="btn btn-default">View</a></td>
+                        </tr>
+                        <tr>
+                          <td>#451231</td>
+                          <td>Mar 25, 2016</td>
+                          <td>3</td>
+                          <td>$150.00</td>
+                          <td><span class="label label-success">Completed</span></td>
+                          <td><a href="#" class="btn btn-default">View</a></td>
+                        </tr>
+                        <tr>
+                          <td>#451231</td>
+                          <td>Mar 25, 2016</td>
+                          <td>3</td>
+                          <td>$150.00</td>
+                          <td><span class="label label-danger">Canceled</span></td>
+                          <td><a href="#" class="btn btn-default">View</a></td>
+                        </tr>
+                        <tr>
+                          <td>#451231</td>
+                          <td>Mar 25, 2016</td>
+                          <td>2</td>
+                          <td>$99.00</td>
+                          <td><span class="label label-info">On Hold</span></td>
+                          <td><a href="#" class="btn btn-default">View</a></td>
+                        </tr>
+                        <tr>
+                          <td>#451231</td>
+                          <td>Mar 25, 2016</td>
+                          <td>3</td>
+                          <td>$150.00</td>
+                          <td><span class="label label-warning">Pending</span></td>
+                          <td><a href="#" class="btn btn-default">View</a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+      
+
+     {% include 'footer.html' %}
+</body></html>

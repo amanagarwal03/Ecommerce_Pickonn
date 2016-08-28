@@ -6,5 +6,6 @@ urlpatterns = [
     url(r'^register/$', "ecommerce.views.register",name="register"),
     url(r'^login/$', "ecommerce.views.user_login", name="login"),
     url(r'^logout/$', "ecommerce.views.user_logout",name="logout"),
+    url(r'^myorders/$', "ecommerce.views.user_order",name="order"),
 ]
 # name='register'
