@@ -125,3 +125,9 @@ def user_order(request):
         'title':'My Orders',
     }
     return render(request,'orders.html',context)
+
+def product_detail(request):
+    context={
+        'title':'prod',
+    }
+    return render(request,'products.html',context)

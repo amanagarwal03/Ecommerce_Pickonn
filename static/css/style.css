@@ -1267,9 +1267,13 @@ ul.paging {
 	display:block;
 	color:#999;
 	font-size:14px;
-	background:url(../images/img-sp.png) no-repeat -9px -150px;
-	padding-left:2em;
+	/*background:url(../images/img-sp.png) no-repeat -9px -150px;*/
+	
 	margin-bottom:1em;
+}
+.categories ul li span{
+	padding-left: 1em;
+	/*margin-: 2em;*/
 }
 .categories ul li a{
 	color:#999;
