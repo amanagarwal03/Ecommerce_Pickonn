@@ -131,3 +131,9 @@ def product_detail(request):
         'title':'prod',
     }
     return render(request,'products.html',context)
+
+def affiliate(request):
+    context={
+        'title':'affiliate',
+    }
+    return render(request,'index_aff.html',context)

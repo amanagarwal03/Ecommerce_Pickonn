@@ -8,5 +8,6 @@ urlpatterns = [
     url(r'^logout/$', "ecommerce.views.user_logout",name="logout"),
     url(r'^myorders/$', "ecommerce.views.user_order",name="order"),
     url(r'^products/$', "ecommerce.views.product_detail",name="p_detail"),
+    url(r'^affiliate/$', "ecommerce.views.affiliate",name="affiliate"),
 ]
 # name='register'
