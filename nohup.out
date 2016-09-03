@@ -1,0 +1,28 @@
+/home/amanagarwal03/Desktop/pickonn/src/ecommerce/urls.py:5: RemovedInDjango110Warning: Support for string view arguments to url() is deprecated and will be removed in Django 1.10 (got ecommerce.views.ecommerce_home). Pass the callable instead.
+  url(r'^$', "ecommerce.views.ecommerce_home",name="home"),
+
+/home/amanagarwal03/Desktop/pickonn/src/ecommerce/urls.py:6: RemovedInDjango110Warning: Support for string view arguments to url() is deprecated and will be removed in Django 1.10 (got ecommerce.views.register). Pass the callable instead.
+  url(r'^register/$', "ecommerce.views.register",name="register"),
+
+/home/amanagarwal03/Desktop/pickonn/src/ecommerce/urls.py:7: RemovedInDjango110Warning: Support for string view arguments to url() is deprecated and will be removed in Django 1.10 (got ecommerce.views.user_login). Pass the callable instead.
+  url(r'^login/$', "ecommerce.views.user_login", name="login"),
+
+/home/amanagarwal03/Desktop/pickonn/src/ecommerce/urls.py:8: RemovedInDjango110Warning: Support for string view arguments to url() is deprecated and will be removed in Django 1.10 (got ecommerce.views.user_logout). Pass the callable instead.
+  url(r'^logout/$', "ecommerce.views.user_logout",name="logout"),
+
+/home/amanagarwal03/Desktop/pickonn/src/ecommerce/urls.py:9: RemovedInDjango110Warning: Support for string view arguments to url() is deprecated and will be removed in Django 1.10 (got ecommerce.views.user_order). Pass the callable instead.
+  url(r'^myorders/$', "ecommerce.views.user_order",name="order"),
+
+/home/amanagarwal03/Desktop/pickonn/src/ecommerce/urls.py:10: RemovedInDjango110Warning: Support for string view arguments to url() is deprecated and will be removed in Django 1.10 (got ecommerce.views.product_detail). Pass the callable instead.
+  url(r'^products/$', "ecommerce.views.product_detail",name="p_detail"),
+
+/home/amanagarwal03/Desktop/pickonn/src/ecommerce/urls.py:11: RemovedInDjango110Warning: Support for string view arguments to url() is deprecated and will be removed in Django 1.10 (got ecommerce.views.affiliate). Pass the callable instead.
+  url(r'^affiliate/$', "ecommerce.views.affiliate",name="affiliate"),
+
+Performing system checks...
+
+System check identified no issues (0 silenced).
+September 02, 2016 - 13:06:30
+Django version 1.9, using settings 'src.settings'
+Starting development server at http://192.168.69.136:8000/
+Quit the server with CONTROL-C.

@@ -1,0 +1,19 @@
+<style type="text/css">
+	label[for="id_affliate_id"]{
+		display: none;
+	}
+</style>
+{% if registered %}
+	Registeres Succesffully Go To Hell.
+{% else %}
+<form action='' method="post">
+{% csrf_token %}
+	{% for field in aff_form %}
+		{{ field.label_tag }}{{ field }}<br>
+	{% endfor %}
+	{% for field in aff_form2 %}
+		{{ field.label_tag }}{{ field }}<br>
+	{% endfor %}
+	<input type="submit" name="submit" value="Register">
+</form>
+{% endif %}

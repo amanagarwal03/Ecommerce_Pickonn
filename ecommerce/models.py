@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 from django.db import models
+from django.contrib.auth.models import User
+from datetime import datetime
 
 # Create your models here.
 class Account(models.Model):
@@ -16,3 +18,18 @@ class Account(models.Model):
 
     def __str__(self):
         return self.username
+
+CHOICES = (('1', 'Mr.',), ('2', 'Mrs.',))
+class Account_aff(models.Model):
+    user = models.OneToOneField(User)
+    affliate_id = models.CharField(max_length=50)
+    company = models.CharField(max_length=100)
+    domain = models.CharField(max_length=100)
+    title = models.CharField(max_length=100,choices=CHOICES,default='')
+    dob = models.DateField(default = datetime.now,blank=True)
+
+    def __unicode__(self):
+        return self.user.username
+
+    def __str__(self):
+        return self.user.username

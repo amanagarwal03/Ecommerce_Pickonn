@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^myorders/$', "ecommerce.views.user_order",name="order"),
     url(r'^products/$', "ecommerce.views.product_detail",name="p_detail"),
     url(r'^affiliate/$', "ecommerce.views.affiliate",name="affiliate"),
+    url(r'^affiliate/register/$', "ecommerce.views.aff_register",name="aff_register"),
 ]
 # name='register'

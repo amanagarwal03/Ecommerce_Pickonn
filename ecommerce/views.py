@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect, HttpResponse
-from ecommerce.forms import UserForm
+from ecommerce.forms import UserForm, AffiliateForm,AffiliateForm2
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
+from django.utils.crypto import get_random_string
+from .models import Account_aff
 
 def ecommerce_home(request):
 	context={
@@ -133,7 +135,59 @@ def product_detail(request):
     return render(request,'products.html',context)
 
 def affiliate(request):
-    context={
-        'title':'affiliate',
-    }
-    return render(request,'index_aff.html',context)
+    context = RequestContext(request)
+    if request.method == 'POST':
+        aff_id = request.POST['aff_id']
+        password = request.POST['password']
+        print aff_id,password
+        b = Account_aff.objects.filter(affliate_id=aff_id)
+        username =  b[0]
+        user = authenticate(username=username, password=password)
+        if user:
+            print 'hi'
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect('/ecommerce/')
+            else:
+                return HttpResponse("Your Pickonn account is disabled.")
+        else:
+            print "Invalid login details: {0}, {1}".format(username, password)
+            return HttpResponse("Invalid login details supplied.")
+    else:
+        return render_to_response('index_aff.html', {'title':'Affiliate'}, context)
+
+
+def aff_register(request):
+    context = RequestContext(request)
+    registered = False
+    if request.method == "POST":
+        aff_form = AffiliateForm(data=request.POST)
+        aff_form2 =AffiliateForm2(data=request.POST)
+        # If the two forms are valid...
+        if aff_form.is_valid() and aff_form2.is_valid():
+            # Save the user's form data to the database.
+            aff = aff_form.save()
+            
+            # Now we hash the password with the set_password method.
+            # Once hashed, we can update the user 0bject.
+            password = get_random_string(length=15)
+            AFF_ID = get_random_string(length=10).upper()
+
+            aff.set_password(password)
+            aff.save()
+            aff2 = aff_form2.save(commit=False)
+            aff2.user = aff
+            aff2.affliate_id = AFF_ID
+            aff2.save()
+            # Update our variable to tell the template registration was successful.
+            registered = True
+        else:
+            print aff_form2.errors
+        # Invalid form or forms - mistakes or something else?
+        # Print problems to the terminal.
+        # They'll also be shown to the user.
+    else:
+        #print password
+        aff_form = AffiliateForm()
+        aff_form2 = AffiliateForm2()
+    return render_to_response('aff_register.html',{'aff_form': aff_form,'aff_form2':aff_form2,'registered':registered},context)
