@@ -163,8 +163,10 @@ def aff_register(request):
     if request.method == "POST":
         aff_form = AffiliateForm(data=request.POST)
         aff_form2 =AffiliateForm2(data=request.POST)
+        print aff_form2
         # If the two forms are valid...
         if aff_form.is_valid() and aff_form2.is_valid():
+            print 'ff'
             # Save the user's form data to the database.
             aff = aff_form.save()
             
@@ -183,6 +185,14 @@ def aff_register(request):
             registered = True
         else:
             print aff_form2.errors
+            error = ''
+            if(aff_form.errors):
+                for key in aff_form.errors:
+                    error = error+aff_form.errors[key]+'\n'
+            elif(aff_form2.errors):
+                for key in aff_form2.errors:
+                    error = error+aff_form2.errors[key]+'\n'
+            return render_to_response('aff_register.html',{'error':error},context)
         # Invalid form or forms - mistakes or something else?
         # Print problems to the terminal.
         # They'll also be shown to the user.

@@ -1,0 +1,92 @@
+{% load staticfiles %}
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href='{% static "css/style.css" %}' rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script src='{% static "js/jquery.min.js" %}'></script>
+<!-- //js -->
+<!-- cart -->
+<script src='{% static "js/simpleCart.min.js" %}'></script>
+<!-- cart -->
+<!-- for bootstrap working -->
+<script type="text/javascript" src='{% static "js/bootstrap-3.1.1.min.js" %}'></script>
+<!-- //for bootstrap working -->
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<!-- timer -->
+<link rel="stylesheet" href='{% static "css/jquery.countdown.css" %}' />
+<!-- //timer -->
+<!-- animation-effect -->
+<link href='{% static "css/animate.min.css" %}' rel="stylesheet"> 
+<script src='{% static "js/wow.min.js" %}'></script>
+<style type="text/css">
+	label[for="id_affliate_id"]{
+		display: none;
+	}
+
+</style>
+{% if error %}
+ {{ error }}<br>
+ Go To <a href=''>Register</a> Page
+{% else %}
+{% if registered %}
+	<h1>Registeres Succesffully Go To Hell.</h1>
+{% else %}
+
+     
+
+<div class="top-content">
+        	<div class="container">
+        	
+				
+
+				<div class="row">
+					<div class="col-sm-6 col-sm-offset-3 r-form-1-box wow fadeInUp">
+						<div class="r-form-1-top">
+							<div class="r-form-1-top-left">
+								<h3>Sign up now</h3>
+								<p>Fill in the form below to get instant access:</p>
+							</div>
+							<div class="r-form-1-top-right">
+								<i class="fa fa-pencil"></i>
+							</div>
+						</div>
+						<div class="r-form-1-bottom">
+							<form role="form" action="" method="post">
+								{% csrf_token %}
+								{% for field in aff_form %}
+								<div class="form-group">
+									<!-- <label class="sr-only" for="r-form-1-{{ field.name }}">{{ field.name }}</label> -->
+									{{ field.label_tag }}
+									{{ field }}
+									</div>
+								{% endfor %}
+								{% for field in aff_form2 %}
+								<div class="form-group">
+									{{ field.label_tag }}
+									{{ field }}
+									</div>
+								{% endfor %}
+								
+								<!-- <div class="form-group">
+									<label class="sr-only" for="r-form-1-last-name">Last name</label>
+									<input type="text" name="r-form-1-last-name" placeholder="Last name..." class="r-form-1-last-name form-control" id="r-form-1-last-name">
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="r-form-1-email">Email</label>
+									<input type="text" name="r-form-1-email" placeholder="Email..." class="r-form-1-email form-control" id="r-form-1-email">
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="r-form-1-about-yourself">About yourself</label>
+									<textarea name="r-form-1-about-yourself" placeholder="About yourself..." 
+												class="r-form-1-about-yourself form-control" id="r-form-1-about-yourself"></textarea>
+								</div> -->
+								<button type="submit" class="btn">Sign me up!</button>
+							</form>
+						</div>
+					</div>
+				</div>
+                
+            </div>
+        </div>
+        {% endif %}
+         {% endif %}

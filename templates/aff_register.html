@@ -1,19 +1,117 @@
-<style type="text/css">
-	label[for="id_affliate_id"]{
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+
+		<!-- Website CSS style -->
+		<link rel="stylesheet" type="text/css" href="{% static 'css_aff/main.css' %}">
+<script src='{% static "js/jquery.min.js" %}'></script>
+		<!-- Website Font style -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		
+		<!-- Google Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+		<title>Register | Affiliate Program</title>
+		<style type="text/css">
+	#id_affliate_id,label[for="id_affliate_id"]{
 		display: none;
 	}
+
 </style>
-{% if registered %}
-	Registeres Succesffully Go To Hell.
+	</head>
+	{% if error %}
+ {{ error }}<br>
+ Go To <a href=''>Register</a> Page
+{% elif registered %}
+	<h1>Registeres Succesffully Go To Hell.</h1>
 {% else %}
-<form action='' method="post">
-{% csrf_token %}
-	{% for field in aff_form %}
-		{{ field.label_tag }}{{ field }}<br>
-	{% endfor %}
-	{% for field in aff_form2 %}
-		{{ field.label_tag }}{{ field }}<br>
-	{% endfor %}
-	<input type="submit" name="submit" value="Register">
-</form>
+	<body style="background-image:url('{% static 'img_aff/bg_aff_reg.jpg' %}') ; height:100%; width:100%; ">
+		<div class="container" >
+			<div class="row main">
+				<div class="panel-heading">
+	               <div class="panel-title text-center">
+	               		<h1 class="title">Register | Pickonn Affiliate Program</h1>
+	               		<hr />
+	               	</div>
+	            </div> 
+				<div class="main-login main-center">
+					<form class="form-horizontal" method="post" action="">
+						{% csrf_token %}
+						{% for field in aff_form %}
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">{{ field.label_tag }}</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									{% if field.auto_id == 'id_username' %}
+										<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+									{% elif field.auto_id == 'id_email' %}
+										<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									{% elif field.auto_id == 'id_first_name' %}
+										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+										{% else %}
+										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									{% endif %}
+									<input type="text" class="form-control" name="{{ field.name }}" id="{{ field.auto_id }}"  placeholder="Enter your {{ field.html_name }} "/>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+						{% for field in aff_form2 %}
+						<div class="form-group">
+						{{ field.initial }}
+							{{ field.label_tag }}
+							<div class="cols-sm-10">
+								<div class="input-group">
+								{% if field.auto_id != 'id_affliate_id' %}
+									{% if field.auto_id == 'id_company' %}
+										<span class="input-group-addon"><i class="fa fa-building-o fa" aria-hidden="true"></i></span>
+									{% elif field.auto_id == 'id_domain' %}
+										<span class="input-group-addon"><i class="fa fa-at fa" aria-hidden="true"></i></span>
+									{% elif field.auto_id == 'id_dob' %}
+										<span class="input-group-addon"><i class="fa fa-calendar fa" aria-hidden="true"></i></span>
+										{% else %}
+										<span class="input-group-addon"><i class="fa fa-male fa" aria-hidden="true"></i></span>
+									{% endif %}
+									{% endif %}
+									{% if field.auto_id == 'id_dob' %}
+
+									<input type="date" class="form-control" name="{{ field.name }}" id="{{ field.auto_id }}"  placeholder="Enter your DOB " data-date-inline-picker="true"/>
+									{% elif field.auto_id == 'id_title' %}
+										<select id="id_title" name="title" class="form-control">
+											<option value="1">Mr.</option>
+											<option value="2">Mrs.</option>
+										</select>
+			
+										<!-- {{ field }} -->
+									{% elif field.auto_id == 'id_affliate_id' %}
+									{{ field }}	
+									{% else %}
+									<input type="text" class="form-control" name="{{ field.name }}" id="{{ field.auto_id }}"  placeholder="Enter your {{ field.html_name }} "/>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+
+
+						<div class="form-group ">
+							<input type="submit" class="btn btn-primary btn-lg btn-block login-button" value="Register">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src='{% static "js/bootstrap-3.1.1.min.js" %}'></script>
+	</body>
+	<script type="text/javascript">
+            $(function () {
+                $('#id_dob').datepicker();
+            });
+        </script>
+</html>
 {% endif %}

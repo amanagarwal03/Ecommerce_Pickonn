@@ -17,10 +17,11 @@ class AffiliateForm(forms.ModelForm):
 		model =User
 		fields=('username','email','first_name','last_name')
 		widget = {
-			'username':forms.CharField(),
-			'email': forms.TextInput(),
-			'first_name':forms.CharField(),
-			'last_name':forms.CharField(),
+			'username':forms.TextInput(attrs={'class':'form-control',
+				'placeholder':'ds'}),
+			'email': forms.TextInput(attrs={'class':'form-control'}),
+			'first_name':forms.TextInput(attrs={'class':'form-control'}),
+			'last_name':forms.TextInput(attrs={'class':'form-control'}),
 		}
 
 
@@ -32,9 +33,9 @@ class AffiliateForm2(forms.ModelForm):
 		model = Account_aff
 		fields=('company','domain','title','dob','affliate_id')
 		widget = {
-			'company': forms.CharField(),
-			'domain': forms.CharField(),
-			'title' :forms.Select(),
-			'dob' :forms.DateInput(),
+			'company': forms.TextInput(attrs={'class':'form-control'}),
+			'domain': forms.TextInput(attrs={'class':'form-control'}),
+			'title' :forms.Select(attrs={'class':'form-control'}),
+			'dob' :forms.DateInput(attrs={'class':'form-control'}),
 			
 		}
